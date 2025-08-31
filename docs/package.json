@@ -1,0 +1,31 @@
+{
+  "name": "@nuxt/devtools-docs",
+  "private": true,
+  "packageManager": "pnpm@10.5.2",
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "generate": "nuxi generate",
+    "preview": "nuxi preview"
+  },
+  "devDependencies": {
+    "@iconify-json/heroicons": "catalog:",
+    "@iconify-json/ph": "catalog:",
+    "@iconify-json/simple-icons": "catalog:",
+    "@nuxt/content": "catalog:",
+    "@nuxt/devtools": "catalog:",
+    "@nuxt/fonts": "catalog:",
+    "@nuxt/image": "catalog:",
+    "@nuxt/ui-pro": "catalog:",
+    "@nuxthq/studio": "catalog:",
+    "@nuxtjs/plausible": "catalog:",
+    "@vueuse/core": "catalog:",
+    "@vueuse/nuxt": "catalog:",
+    "better-sqlite3": "catalog:",
+    "nuxt": "catalog:",
+    "nuxt-og-image": "catalog:"
+  },
+  "resolutions": {
+    "@nuxt/ui": "2.15.2"
+  }
+}

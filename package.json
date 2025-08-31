@@ -1,0 +1,72 @@
+{
+  "name": "@nuxt-devtools/monorepo",
+  "type": "module",
+  "version": "2.6.3",
+  "private": true,
+  "packageManager": "pnpm@10.15.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuxt/devtools.git"
+  },
+  "scripts": {
+    "build": "pnpm -r --filter=\"./packages/**/*\" run build",
+    "stub": "pnpm -r run stub",
+    "dev": "pnpm run stub && pnpm -C packages/devtools dev",
+    "lint": "eslint --cache .",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "release": "pnpm test && bumpp -r -x \"pnpm run changelog\" --all",
+    "test": "pnpm lint",
+    "docs": "nuxi dev docs",
+    "docs:build": "CI=true nuxi generate docs",
+    "typecheck": "vue-tsc --noEmit",
+    "postinstall": "npx simple-git-hooks && pnpm -C docs install",
+    "prepare": "pnpm -r --filter=\"./packages/*\" run dev:prepare"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "catalog:cli",
+    "@antfu/ni": "catalog:cli",
+    "@nuxt/devtools": "workspace:*",
+    "@nuxt/devtools-ui-kit": "workspace:*",
+    "@nuxt/eslint": "catalog:cli",
+    "@nuxt/module-builder": "catalog:buildtools",
+    "@nuxt/schema": "catalog:types",
+    "@types/markdown-it": "catalog:types",
+    "@types/node": "catalog:types",
+    "@types/which": "catalog:types",
+    "@types/ws": "catalog:types",
+    "@unocss/eslint-config": "catalog:buildtools",
+    "bumpp": "catalog:cli",
+    "conventional-changelog-cli": "catalog:cli",
+    "eslint": "catalog:cli",
+    "eslint-flat-config-utils": "catalog:cli",
+    "eslint-plugin-antfu": "catalog:cli",
+    "eslint-plugin-format": "catalog:cli",
+    "execa": "catalog:prod",
+    "lint-staged": "catalog:cli",
+    "nuxt": "catalog:buildtools",
+    "nuxt-eslint-auto-explicit-import": "catalog:cli",
+    "pathe": "catalog:frontend",
+    "simple-git-hooks": "catalog:cli",
+    "taze": "catalog:cli",
+    "tsx": "catalog:cli",
+    "typescript": "catalog:cli",
+    "unimport": "catalog:types",
+    "unocss": "catalog:buildtools",
+    "vite-hot-client": "catalog:frontend",
+    "vue": "catalog:frontend",
+    "vue-tsc": "catalog:cli"
+  },
+  "resolutions": {
+    "@nuxt/devtools": "workspace:*",
+    "esbuild": "catalog:buildtools",
+    "typescript": "catalog:cli",
+    "vite": "catalog:buildtools",
+    "vue-tsc": "catalog:cli"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm i --frozen-lockfile --ignore-scripts --offline && npx lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
